@@ -2,6 +2,7 @@ package com.sprite;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
@@ -14,7 +15,9 @@ public class SpriteTesterAppCode extends Game {
 	public BitmapFont font;
 
 	public void create() {
+		// for loaded sprites 
 		batch = new SpriteBatch();
+		// for debug overlays?
 		shapeRenderer = new ShapeRenderer();
 		
 		//font = new BitmapFont(); // use libGDX's default Arial font
@@ -25,9 +28,15 @@ public class SpriteTesterAppCode extends Game {
 		// https://github.com/libgdx/libgdx/blob/master/extensions/gdx-tools/assets/default.fnt
 		// says small bu it's not
 		// https://github.com/libgdx/libgdx-skins/blob/master/skins/visui/assets/font-small.fnt
+		// make my own eventually and or programtically
 
 		font = new BitmapFont(Gdx.files.internal("ARCADE.fnt"), Gdx.files.internal("ARCADE.png"), false);
 		this.setScreen(new MainSpriteScreen(this));
+	}
+
+	public void toggleFullScreen()
+	{
+		// ?
 	}
 
 	public void render() {

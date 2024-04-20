@@ -4,13 +4,12 @@ package com.sprite;
 import java.util.ArrayList;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Graphics;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector3;
 //import com.badlogic.gdx.utils.ObjectFloatMap.Keys;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -59,7 +58,7 @@ public class MainSpriteScreen implements Screen {
         // this should compile things 
         moreBS.wireTogether(aList, bl);
 
-        System.out.println("LOADED: " + aClassPathString);
+        //System.out.println("LOADED: " + aClassPathString);
         
         
 
@@ -67,10 +66,14 @@ public class MainSpriteScreen implements Screen {
 
         // camera.setToOrtho(false, 800, 480);
         // this is the PIXELS which stretch perfectly for me - for now 
-        camera.setToOrtho(false, 320, 240);
+
+        //camera.setToOrtho(false, 320, 240);
+        // just the worst resolition - but I like it REALLY LOW to view pixels
+        camera.setToOrtho(false, 240, 180);
 
         lastTime = System.nanoTime();
-        System.out.println(lastTime);
+        // start time here - boop
+        // System.out.println(lastTime);
         frame = 0;
     }
 
@@ -85,6 +88,8 @@ public class MainSpriteScreen implements Screen {
         // multi pass?
         // can it keep up
 
+        
+
         // screen to green and a bit solid alpha
         ScreenUtils.clear(0.0f, 0.2f, 0.9f, 1);
         
@@ -96,40 +101,40 @@ public class MainSpriteScreen implements Screen {
 
         game.batch.begin();
 
-        // should be somewhat the same 
-        // this guy will not have find index of frames - he will just know it 
-        moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BStand"), 70,200, false,true);
-        moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BWalkA"), 100,200, false,true);
-        moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BWalkB"), 130,200, false,true);
+        // // should be somewhat the same 
+        // // this guy will not have find index of frames - he will just know it 
+        // moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BStand"), 70,200, false,true);
+        // moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BWalkA"), 100,200, false,true);
+        // moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BWalkB"), 130,200, false,true);
 
-        moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BStand"), 160,200, true,true);
-        moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BWalkA"), 190,200, true,true);
-        moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BWalkB"), 220,200, true,true);
+        // moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BStand"), 160,200, true,true);
+        // moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BWalkA"), 190,200, true,true);
+        // moreBS.addToBatch(game.batch, moreBS.findIndexOfFrame("BWalkB"), 220,200, true,true);
 
-        // moreBS.addToBatch(game.batch, 5, 70,150, false,true);
-        // moreBS.addToBatch(game.batch, 6, 100,150, false,true);
-        // moreBS.addToBatch(game.batch, 7, 130,150, false,true);
+        // // moreBS.addToBatch(game.batch, 5, 70,150, false,true);
+        // // moreBS.addToBatch(game.batch, 6, 100,150, false,true);
+        // // moreBS.addToBatch(game.batch, 7, 130,150, false,true);
 
         
-        // find the one compound frame I made
-        int compound = moreBS.findIndexOfFrame("STANDING");
-        if (compound>=0)
-        {
-            //System.out.println("COMPPOUND");
+        // // find the one compound frame I made
+        // int compound = moreBS.findIndexOfFrame("STANDING");
+        // if (compound>=0)
+        // {
+        //     //System.out.println("COMPPOUND");
 
-            // this is the hot spot calculation
-            moreBS.addToBatch(game.batch, compound, 160,150, false, true);
+        //     // this is the hot spot calculation
+        //     moreBS.addToBatch(game.batch, compound, 160,150, false, true);
 
-            moreBS.addToBatch(game.batch, compound, 210,150, true, true);
-            moreBS.addToBatch(game.batch, compound, 190,150, true, true);
+        //     moreBS.addToBatch(game.batch, compound, 210,150, true, true);
+        //     moreBS.addToBatch(game.batch, compound, 190,150, true, true);
 
 
             
-        }
-        else
-        {
-            System.out.println("No find compound - STANDING");
-        }
+        // }
+        // else
+        // {
+        //     System.out.println("No find compound - STANDING");
+        // }
 
         int heads = moreBS.findIndexOfFrame("HEADTEST");
         if (heads>=0)
@@ -160,36 +165,36 @@ public class MainSpriteScreen implements Screen {
         // TODO: LOAD a SPRITE HERE and DO THINGS WITH IT
         // TODO: Then make an interactive editor
         // TODO: Then save sprite files with bucket technology
-        game.font.setColor(Color.WHITE);
-        game.font.draw(game.batch, "Welcome to A Poopfs!!! ", 100, 150);
-        game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
-        game.font.setColor(Color.WHITE);
-        game.font.draw(game.batch, "abcdefghijklmnopqrsuvwxyz!", 101, 51);
-        game.font.setColor(Color.CHARTREUSE);
-        game.font.draw(game.batch, "abcdefghijklmnopqrsuvwxyz!", 100, 50);
-        game.font.setColor(Color.FIREBRICK);
-        game.font.draw(game.batch, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!", 100, 20);
+        // game.font.setColor(Color.WHITE);
+        // game.font.draw(game.batch, "Welcome to A Poopfs!!! ", 100, 150);
+        // game.font.draw(game.batch, "Tap anywhere to begin!", 100, 100);
+        // game.font.setColor(Color.WHITE);
+        // game.font.draw(game.batch, "abcdefghijklmnopqrsuvwxyz!", 101, 51);
+        // game.font.setColor(Color.CHARTREUSE);
+        // game.font.draw(game.batch, "abcdefghijklmnopqrsuvwxyz!", 100, 50);
+        // game.font.setColor(Color.FIREBRICK);
+        // game.font.draw(game.batch, "ABCDEFGHIJKLMNOPQRSTUVWXYZ!", 100, 20);
 
         game.batch.end();
 
-        // the above is SPRITE BATCHING - can I do other things here?
-        Gdx.gl20.glEnable(GL20.GL_BLEND);
-        Gdx.gl20.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+        // // the above is SPRITE BATCHING - can I do other things here?
+        // Gdx.gl20.glEnable(GL20.GL_BLEND);
+        // Gdx.gl20.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
-        // this totally works you SOBs - Work it for hit boxes and hurt boxes and etc debugging - possibly a margin or header?!
-        game.shapeRenderer.begin(ShapeType.Filled);
-        game.shapeRenderer.setProjectionMatrix(camera.combined);
+        // // this totally works you SOBs - Work it for hit boxes and hurt boxes and etc debugging - possibly a margin or header?!
+        // game.shapeRenderer.begin(ShapeType.Filled);
+        // game.shapeRenderer.setProjectionMatrix(camera.combined);
 
-        game.shapeRenderer.setColor(1f,0f,0f,.5f);
-        game.shapeRenderer.rect(160, 160, 64, 64);
+        // game.shapeRenderer.setColor(1f,0f,0f,.5f);
+        // game.shapeRenderer.rect(160, 160, 64, 64);
 
-        game.shapeRenderer.setColor(0f,1f,0f,.5f);
-        game.shapeRenderer.rect(200, 120, 64, 64);
+        // game.shapeRenderer.setColor(0f,1f,0f,.5f);
+        // game.shapeRenderer.rect(200, 120, 64, 64);
         
 
-        game.shapeRenderer.end();
+        // game.shapeRenderer.end();
         
-        Gdx.gl.glDisable(GL20.GL_BLEND);
+        // Gdx.gl.glDisable(GL20.GL_BLEND);
 
 
         	// process user input
@@ -204,16 +209,52 @@ public class MainSpriteScreen implements Screen {
             debugY = (int)touchPos.y;
 		}
   
-        if (Gdx.input.isKeyPressed(Keys.SPACE))
-        {
-            debugD *= -1;
-        }
+        
+            //if (Gdx.input.isKeyPressed(Keys.SPACE))
+            if (Gdx.input.isKeyJustPressed(Keys.SPACE))
+            {
+                debugD *= -1;
+                
+            }
+            // 
+            if (Gdx.input.isKeyJustPressed(Keys.F11))
+            {
+                
+                // this isn't doing it nicely
+                // Input.isKeyJustPressed was added in version 1.3.0.                
+                //https://stackoverflow.com/questions/55554327/how-to-enable-fullscreen-when-pressing-a-key-in-libgdx
+                //Boolean fullScreen = Gdx.graphics.isFullscreen();
+                System.out.println("Changing " + fullscreen);
+                Graphics.DisplayMode currentMode = Gdx.graphics.getDisplayMode();
+                //System.out.println(currentMode.toString()); // 1920x1080, bpp: 24, hz: 60
+                if (fullscreen == true)
+                {
+                    // this is FULL SCREEN - NO MENU - SEE BAR
+                    //Gdx.graphics.setWindowedMode(currentMode.width, currentMode.height);
+                    Gdx.graphics.setWindowedMode(800, 480);
+                    fullscreen = false;
+                }
+                else
+                {
+                    // does not quite work on my machine
+                    //Gdx.graphics.setFullscreenMode(currentMode);                    
+                    // 1920x1080 - this is my personal shitty full screen
+                    //Gdx.graphics.setWindowedMode(1920, 1080);
+                    Gdx.graphics.setWindowedMode(currentMode.width, currentMode.height); // any monitor
+                    fullscreen = true;
+                }
+                
+            }
+            
+        
         
         // if (Gdx.input.isTouched()) {
         // game.setScreen(new GameScreen(game));
         // dispose();
         // }
     }
+    
+    boolean fullscreen = false;
 
     @Override
     public void resize(int width, int height) {

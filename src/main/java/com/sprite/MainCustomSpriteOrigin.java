@@ -14,7 +14,11 @@ public class MainCustomSpriteOrigin
             Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
             config.setTitle("Sprite Master v0.1 - should have been coded in 2010");
             config.setWindowedMode(800, 480);
-            //config.setWindowedMode(320, 240); // this does not double the pix size ... find the camera
+            //https://stackoverflow.com/questions/35668943/libgdx-borderless-fullscreen
+            // can't start in debug
+            
+            
+
             config.useVsync(true);
             config.setForegroundFPS(60);
             

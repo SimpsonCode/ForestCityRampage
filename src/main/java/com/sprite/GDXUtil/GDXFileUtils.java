@@ -69,16 +69,16 @@ public class GDXFileUtils {
                     }
                 }
             }
-            System.out.println("Found and changed " + c);
+            System.out.println("Found and changed " + c + " pixels to transparent");
             pm.setBlending(Pixmap.Blending.SourceOver);
 
-            String s = Integer.toHexString(p0); // - lets pretend this is top left?
-            System.out.println("STATIC LLOADS BABY x?  " + p0);
-            System.out.println("Hex String? " + s);
-            System.out.println("R: " + ((p0 >> 6 & 0xFF)));
-            System.out.println("G: " + ((p0 >> 4 & 0xFF)));
-            System.out.println("B: " + ((p0 >> 2 & 0xFF)));
-            System.out.println("A: " + ((p0 & 0xFF)));
+            // String s = Integer.toHexString(p0); // - lets pretend this is top left?
+            // System.out.println("STATIC LLOADS BABY x?  " + p0);
+            // System.out.println("Hex String? " + s);
+            // System.out.println("R: " + ((p0 >> 6 & 0xFF)));
+            // System.out.println("G: " + ((p0 >> 4 & 0xFF)));
+            // System.out.println("B: " + ((p0 >> 2 & 0xFF)));
+            // System.out.println("A: " + ((p0 & 0xFF)));
 
         }
         // it is a pixmap before texture here

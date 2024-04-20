@@ -97,7 +97,7 @@ public class BucketSprite {
                 if (aCompoundCount>0)
                 {
                     nf.ivCompoundList = new ArrayList<CompoundChild>();
-                    System.out.println("PARSING FOUND A cOMPOUND");
+                    //System.out.println("PARSING FOUND A cOMPOUND");
                     
                     for (int i=0;i<aCompoundCount;i++)
                     {
